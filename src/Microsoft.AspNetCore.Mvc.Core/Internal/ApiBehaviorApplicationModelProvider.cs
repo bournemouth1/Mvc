@@ -21,6 +21,7 @@ namespace Microsoft.AspNetCore.Mvc.Internal
         private readonly ApiBehaviorOptions _apiBehaviorOptions;
         private readonly IModelMetadataProvider _modelMetadataProvider;
         private readonly ModelStateInvalidFilter _modelStateInvalidFilter;
+        private readonly ProblemDetailsResultFilter _problemDetailsFilter;
         private readonly ILogger _logger;
 
         public ApiBehaviorApplicationModelProvider(
@@ -42,6 +43,10 @@ namespace Microsoft.AspNetCore.Mvc.Internal
             _modelStateInvalidFilter = new ModelStateInvalidFilter(
                 apiBehaviorOptions.Value,
                 loggerFactory.CreateLogger<ModelStateInvalidFilter>());
+
+            _problemDetailsFilter = new ProblemDetailsResultFilter(
+                _apiBehaviorOptions,
+                loggerFactory.CreateLogger<ProblemDetailsResultFilter>());
         }
 
         /// <remarks>
@@ -89,6 +94,8 @@ namespace Microsoft.AspNetCore.Mvc.Internal
                     EnsureActionIsAttributeRouted(controllerHasSelectorModel, actionModel);
 
                     AddInvalidModelStateFilter(actionModel);
+
+                    AddProblemDetailsFilter(actionModel);
 
                     InferParameterBindingSources(actionModel);
 
@@ -147,6 +154,16 @@ namespace Microsoft.AspNetCore.Mvc.Internal
 
             Debug.Assert(_apiBehaviorOptions.InvalidModelStateResponseFactory != null);
             actionModel.Filters.Add(_modelStateInvalidFilter);
+        }
+
+        private void AddProblemDetailsFilter(ActionModel actionModel)
+        {
+            if (!_apiBehaviorOptions.AllowUseProblemDetailsForClientErrorResponses)
+            {
+                return;
+            }
+
+            actionModel.Filters.Add(_problemDetailsFilter);
         }
 
         // Internal for unit testing
