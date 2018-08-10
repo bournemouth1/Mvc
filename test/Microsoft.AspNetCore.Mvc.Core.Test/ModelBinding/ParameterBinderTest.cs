@@ -520,7 +520,8 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
                 Mock.Of<IModelBinderFactory>(),
                 new DefaultObjectValidator(
                     modelMetadataProvider,
-                    new[] { TestModelValidatorProvider.CreateDefaultProvider() }),
+                    new[] { TestModelValidatorProvider.CreateDefaultProvider() },
+                    new MvcOptions()),
                 _optionsAccessor,
                 NullLoggerFactory.Instance);
 
@@ -574,7 +575,8 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
                 Mock.Of<IModelBinderFactory>(),
                 new DefaultObjectValidator(
                     modelMetadataProvider,
-                    new[] { TestModelValidatorProvider.CreateDefaultProvider() }),
+                    new[] { TestModelValidatorProvider.CreateDefaultProvider() },
+                    new MvcOptions()),
                 _optionsAccessor,
                 NullLoggerFactory.Instance);
 
@@ -627,7 +629,8 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
                 Mock.Of<IModelBinderFactory>(),
                 new DefaultObjectValidator(
                     modelMetadataProvider,
-                    new[] { TestModelValidatorProvider.CreateDefaultProvider() }),
+                    new[] { TestModelValidatorProvider.CreateDefaultProvider() },
+                    new MvcOptions()),
                 _optionsAccessor,
                 NullLoggerFactory.Instance);
 
@@ -680,7 +683,8 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
                 Mock.Of<IModelBinderFactory>(),
                 new DefaultObjectValidator(
                     modelMetadataProvider,
-                    new[] { TestModelValidatorProvider.CreateDefaultProvider() }),
+                    new[] { TestModelValidatorProvider.CreateDefaultProvider() },
+                    new MvcOptions()),
                 _optionsAccessor,
                 NullLoggerFactory.Instance);
 
@@ -738,7 +742,8 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
                 Mock.Of<IModelBinderFactory>(),
                 new DefaultObjectValidator(
                     modelMetadataProvider,
-                    new[] { TestModelValidatorProvider.CreateDefaultProvider() }),
+                    new[] { TestModelValidatorProvider.CreateDefaultProvider() },
+                    new MvcOptions()),
                 _optionsAccessor,
                 NullLoggerFactory.Instance);
 
@@ -799,7 +804,8 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
                 Mock.Of<IModelBinderFactory>(),
                 new DefaultObjectValidator(
                     modelMetadataProvider,
-                    new[] { TestModelValidatorProvider.CreateDefaultProvider() }),
+                    new[] { TestModelValidatorProvider.CreateDefaultProvider() },
+                    new MvcOptions()),
                 _optionsAccessor,
                 NullLoggerFactory.Instance);
 
@@ -865,7 +871,8 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
                 Mock.Of<IModelBinderFactory>(),
                 new DefaultObjectValidator(
                     modelMetadataProvider,
-                    new[] { TestModelValidatorProvider.CreateDefaultProvider() }),
+                    new[] { TestModelValidatorProvider.CreateDefaultProvider() },
+                    new MvcOptions()),
                 _optionsAccessor,
                 NullLoggerFactory.Instance);
 
@@ -944,7 +951,8 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
                 mockModelBinderFactory.Object,
                 new DefaultObjectValidator(
                     mockModelMetadataProvider.Object,
-                    new[] { GetModelValidatorProvider(validator) }),
+                    new[] { GetModelValidatorProvider(validator) },
+                    new MvcOptions()),
                 optionsAccessor,
                 loggerFactory ?? NullLoggerFactory.Instance);
         }
