@@ -28,7 +28,7 @@ namespace Microsoft.AspNetCore.Mvc.FunctionalTests
                         services.AddSingleton<ILoggerFactory>(loggerFactory);
 
                         services.Configure<MvcCompatibilityOptions>(
-                            options => options.CompatibilityVersion = CompatibilityVersion.Version_2_1);
+                            options => options.CompatibilityVersion = CompatibilityVersion.Latest);
                     });
         }
 
